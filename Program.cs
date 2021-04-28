@@ -34,6 +34,36 @@ namespace ConsoleApp1
             Console.WriteLine("안녕하세요"[1]);
             Console.WriteLine("안녕하세요"[2]);
             Console.WriteLine("안녕하세요"[3]);
+
+
+            int a = 23423;
+            Console.WriteLine(a);
+
+            a = 2147483647;
+            int b = 1;
+            Console.WriteLine(a);
+            Console.WriteLine(a + b);
+
+            double c = 52.263;
+            float d = 103.32f;
+            //그냥 실수를 적으면 double로 간주한다. 정수는 int로 간주.'
+
+            char e,f;
+            e = 'a';
+            f = (char)44032;        
+            Console.WriteLine(f);
+
+            bool one = 10 < 0;
+            bool other = 20 > 100;
+
+            Console.WriteLine(one);
+            Console.WriteLine(other);
+
+            int number = 10;
+            number++;
+            Console.WriteLine(number);
+            number--;
+            Console.WriteLine(number);
         }
     }
 }
