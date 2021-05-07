@@ -17,6 +17,12 @@ namespace IndexerTestApp
             {
                 Console.WriteLine(list[i] + "\t");
             }
+
+            Console.WriteLine("예제---------");
+            foreach(var item in list)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
