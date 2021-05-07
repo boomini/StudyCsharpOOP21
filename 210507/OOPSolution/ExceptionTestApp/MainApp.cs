@@ -28,10 +28,10 @@ namespace ExceptionTestApp
             int[] list = { 107, 108, 109 };
             try
             {
-                String message = null;
+                String message = "Hell";
                 Console.WriteLine(message.Length);
-                var result = list[1] / 0;
-                for(int i=0; i<5; i++)
+                var result = list[1] / 10;
+                for(int i=0; i<3; i++)
                 {
                     Console.WriteLine(list[i]);
                 }
@@ -60,6 +60,10 @@ namespace ExceptionTestApp
                 Console.WriteLine($"예외발생 : {ex.Message}");//퉁치기
                 Console.WriteLine("Exception 이후 처리!");
 
+            }
+            finally
+            {
+                Console.WriteLine("Finally, 언제든지 실행됨");
             }
 
             Console.WriteLine("프로그램 종료!");
