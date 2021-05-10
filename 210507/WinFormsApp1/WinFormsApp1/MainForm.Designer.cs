@@ -95,6 +95,7 @@ namespace WinFormsApp1
             this.Cursor = System.Windows.Forms.Cursors.Cross;
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
