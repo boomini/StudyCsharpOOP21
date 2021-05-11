@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicThreadTestApp", "BasicThreadTestApp\BasicThreadTestApp.csproj", "{A133876B-7580-4E41-A044-4621FEF50587}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformThreadApp", "WinformThreadApp\WinformThreadApp.csproj", "{CD2CE821-FD44-434C-B7BB-AC756687F364}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadLockTestApp", "ThreadLockTestApp\ThreadLockTestApp.csproj", "{79F55667-15AD-443C-A05B-72824F85656C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTestApp", "TaskTestApp\TaskTestApp.csproj", "{1B245374-DE6E-4FDE-9796-C27E6FD7DDCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelTestApp", "ParallelTestApp\ParallelTestApp.csproj", "{638F8D44-9853-4A86-9C5C-8252E6EFCEE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncTestApp", "AsyncTestApp\AsyncTestApp.csproj", "{3C8B05F3-67F5-47C8-8966-14E1B84FBA47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEditorApp", "TextEditorApp\TextEditorApp.csproj", "{B95DA867-E7B7-4ACE-B965-C73F6347A3C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A133876B-7580-4E41-A044-4621FEF50587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A133876B-7580-4E41-A044-4621FEF50587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A133876B-7580-4E41-A044-4621FEF50587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A133876B-7580-4E41-A044-4621FEF50587}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD2CE821-FD44-434C-B7BB-AC756687F364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD2CE821-FD44-434C-B7BB-AC756687F364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD2CE821-FD44-434C-B7BB-AC756687F364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD2CE821-FD44-434C-B7BB-AC756687F364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F55667-15AD-443C-A05B-72824F85656C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F55667-15AD-443C-A05B-72824F85656C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F55667-15AD-443C-A05B-72824F85656C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F55667-15AD-443C-A05B-72824F85656C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B245374-DE6E-4FDE-9796-C27E6FD7DDCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B245374-DE6E-4FDE-9796-C27E6FD7DDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B245374-DE6E-4FDE-9796-C27E6FD7DDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B245374-DE6E-4FDE-9796-C27E6FD7DDCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{638F8D44-9853-4A86-9C5C-8252E6EFCEE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{638F8D44-9853-4A86-9C5C-8252E6EFCEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{638F8D44-9853-4A86-9C5C-8252E6EFCEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{638F8D44-9853-4A86-9C5C-8252E6EFCEE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C8B05F3-67F5-47C8-8966-14E1B84FBA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C8B05F3-67F5-47C8-8966-14E1B84FBA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C8B05F3-67F5-47C8-8966-14E1B84FBA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C8B05F3-67F5-47C8-8966-14E1B84FBA47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95DA867-E7B7-4ACE-B965-C73F6347A3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95DA867-E7B7-4ACE-B965-C73F6347A3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95DA867-E7B7-4ACE-B965-C73F6347A3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95DA867-E7B7-4ACE-B965-C73F6347A3C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63413C91-A4E9-4CF9-8743-8979C678C154}
+	EndGlobalSection
+EndGlobal
