@@ -44,13 +44,13 @@ namespace ApplicationDev
         {
             try
             {
-                String strCon = "Data Source=61.105.9.203;Initial Catalog=AppDEV; User ID=kfqs; Password=1234";
+                String strCon = "Data Source=61.105.9.203;Initial Catalog=AppDEV; User ID=kfqs1; Password=1234";
                 Connect = new SqlConnection(strCon);
                 Connect.Open(); // 데이터 베이스에 접속한다.
 
                 if (Connect.State != System.Data.ConnectionState.Open)
                 {
-                    MessageBox.Show("데이터 베이스 연결에 실패하였씁니다.");
+                   MessageBox.Show("데이터 베이스 연결에 실패하였씁니다.");
                     return;
                 }
                 String sLoginId = String.Empty;
