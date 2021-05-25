@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DEV_form;
 
 namespace ApplicationDev
 {
@@ -90,7 +91,9 @@ namespace ApplicationDev
                 }
                 else
                 {
-                    this.Tag = DtTemp.Rows[0]["USERNAME"].ToString(); 
+                    Common.LogInId = txtUserId.Text;
+                    Common.LogInName = DtTemp.Rows[0]["USERNAME"].ToString(); //유저명은 Common에 등록함
+                    this.Tag = DtTemp.Rows[0]["USERNAME"].ToString(); //
                     this.Close();
                 }
             }

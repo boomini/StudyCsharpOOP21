@@ -97,19 +97,21 @@ namespace DEV_form
             // 
             // dtpStart
             // 
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpStart.Location = new System.Drawing.Point(632, 35);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(121, 27);
             this.dtpStart.TabIndex = 2;
-            this.dtpStart.Value = new System.DateTime(2021, 5, 24, 0, 0, 0, 0);
+            this.dtpStart.Value = new System.DateTime(2020, 5, 1, 0, 0, 0, 0);
             // 
             // dtpEnd
             // 
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpEnd.Location = new System.Drawing.Point(785, 36);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(121, 27);
             this.dtpEnd.TabIndex = 3;
-            this.dtpEnd.Value = new System.DateTime(2021, 5, 24, 0, 0, 0, 0);
+            this.dtpEnd.Value = new System.DateTime(2021, 5, 25, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -241,6 +243,8 @@ namespace DEV_form
             // 
             // dgvGrid
             // 
+            this.dgvGrid.AllowUserToAddRows = false;
+            this.dgvGrid.AllowUserToDeleteRows = false;
             this.dgvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvGrid.Location = new System.Drawing.Point(3, 62);
@@ -339,7 +343,7 @@ namespace DEV_form
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FM_Item";
-            this.Text = "FM_Item";
+            this.Text = "품목관리";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FM_ITEM_Load);
             this.groupBox1.ResumeLayout(false);
