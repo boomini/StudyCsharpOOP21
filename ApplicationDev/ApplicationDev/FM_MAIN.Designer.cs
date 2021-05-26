@@ -35,6 +35,8 @@ namespace ApplicationDev
             this.MDI_TEST = new System.Windows.Forms.ToolStripMenuItem();
             this.MDI_TEST2 = new System.Windows.Forms.ToolStripMenuItem();
             this.FM_Item = new System.Windows.Forms.ToolStripMenuItem();
+            this.FM_CUST = new System.Windows.Forms.ToolStripMenuItem();
+            this.Fm_Cust_ = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.stbSearch = new System.Windows.Forms.ToolStripButton();
             this.stbInsert = new System.Windows.Forms.ToolStripButton();
@@ -49,7 +51,6 @@ namespace ApplicationDev
             this.tssNowDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.myTabControl1 = new ApplicationDev.MyTabControl();
-            this.FM_CUST = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -72,7 +73,8 @@ namespace ApplicationDev
             this.MDI_TEST,
             this.MDI_TEST2,
             this.FM_Item,
-            this.FM_CUST});
+            this.FM_CUST,
+            this.Fm_Cust_});
             this.M_SYSTEM.Name = "M_SYSTEM";
             this.M_SYSTEM.Size = new System.Drawing.Size(98, 24);
             this.M_SYSTEM.Text = "시스템관리";
@@ -80,20 +82,32 @@ namespace ApplicationDev
             // MDI_TEST
             // 
             this.MDI_TEST.Name = "MDI_TEST";
-            this.MDI_TEST.Size = new System.Drawing.Size(185, 26);
+            this.MDI_TEST.Size = new System.Drawing.Size(227, 26);
             this.MDI_TEST.Text = "테스트 화면";
             // 
             // MDI_TEST2
             // 
             this.MDI_TEST2.Name = "MDI_TEST2";
-            this.MDI_TEST2.Size = new System.Drawing.Size(185, 26);
+            this.MDI_TEST2.Size = new System.Drawing.Size(227, 26);
             this.MDI_TEST2.Text = "테스트 화면 2";
             // 
             // FM_Item
             // 
             this.FM_Item.Name = "FM_Item";
-            this.FM_Item.Size = new System.Drawing.Size(185, 26);
+            this.FM_Item.Size = new System.Drawing.Size(227, 26);
             this.FM_Item.Text = "품목 관리";
+            // 
+            // FM_CUST
+            // 
+            this.FM_CUST.Name = "FM_CUST";
+            this.FM_CUST.Size = new System.Drawing.Size(227, 26);
+            this.FM_CUST.Text = "거래처 조회";
+            // 
+            // Fm_Cust_
+            // 
+            this.Fm_Cust_.Name = "Fm_Cust_";
+            this.Fm_Cust_.Size = new System.Drawing.Size(227, 26);
+            this.Fm_Cust_.Text = "거래처 조회 Sample";
             // 
             // toolStrip
             // 
@@ -232,12 +246,6 @@ namespace ApplicationDev
             this.myTabControl1.Size = new System.Drawing.Size(1196, 381);
             this.myTabControl1.TabIndex = 6;
             // 
-            // FM_CUST
-            // 
-            this.FM_CUST.Name = "FM_CUST";
-            this.FM_CUST.Size = new System.Drawing.Size(185, 26);
-            this.FM_CUST.Text = "거래처 조회";
-            // 
             // FM_MAIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -285,5 +293,6 @@ namespace ApplicationDev
         private MyTabControl myTabControl1;
         private System.Windows.Forms.ToolStripMenuItem FM_Item;
         private System.Windows.Forms.ToolStripMenuItem FM_CUST;
+        private System.Windows.Forms.ToolStripMenuItem Fm_Cust_;
     }
 }

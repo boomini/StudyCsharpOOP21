@@ -20,7 +20,7 @@ namespace ApplicationDev
             //버튼에 이벤트 추가
             
             //로그인
-            FM_Login Login = new FM_Login();
+           /* FM_Login Login = new FM_Login();
             Login.ShowDialog();
             tssUserName.Text = Login.Tag.ToString();
             if(Login.Tag.ToString() == "FAIL")
@@ -29,7 +29,7 @@ namespace ApplicationDev
                 //Application.Exit();
                 System.Environment.Exit(0);
             }
-           
+           */
             ////버튼에 종료 이벤트추가
             this.stbExit.Click += new System.EventHandler(this.stbExit_Click);
 
@@ -39,6 +39,18 @@ namespace ApplicationDev
             //메뉴클릭이벤트 추가
             this.M_SYSTEM.DropDownItemClicked +=
                 new System.Windows.Forms.ToolStripItemClickedEventHandler(this.M_SYSTEM_DropDownItemClicked);
+
+            //버튼 조회 이벤트 추가
+            this.stbSearch.Click += new System.EventHandler(this.stbSearch_Click);
+            
+            //버튼 추가 이벤트 추가
+            this.stbInsert.Click += new System.EventHandler(this.stbInsert_Click);
+            
+            //버튼 삭제 이벤트 추가
+            this.stbDelete.Click += new System.EventHandler(this.stbDelete_Click);
+            
+            //버튼 저장 이벤트 추가
+            this.stbSave.Click += new System.EventHandler(this.stbSave_Click);
         }
 
         private void stbClose_Click(object sender, EventArgs e)
@@ -53,7 +65,23 @@ namespace ApplicationDev
         {
             this.Close();
         }
-
+        private void stbSearch_Click(object sender, EventArgs e)
+        {
+            ChidCommand("SEARCH");
+        }
+        private void stbInsert_Click(object sender, EventArgs e)
+        {
+            ChidCommand("NEW");
+        }
+        private void stbDelete_Click(object sender, EventArgs e)
+        {
+            ChidCommand("DELETE");
+        }
+        private void stbSave_Click(object sender, EventArgs e)
+        {
+            ChidCommand("SAVE");
+        }
+      
         private void timer1_Tick(object sender, EventArgs e)
         {
             tssNowDate.Text = DateTime.Now.ToString();
@@ -94,10 +122,22 @@ namespace ApplicationDev
             myTabControl1.AddForm(ShowForm); //웹페이지에 폼을 추가하여 오픈한다.
         }
 
-       
+        private void ChidCommand(String Command)
+        {
+            if (this.myTabControl1.TabPages.Count == 0) return;
+            var Child = myTabControl1.SelectedTab.Controls[0] as DEV_form.ChildInterface; //제일 상위 컨테이너 개념은 form을 가르킨다.
+            switch (Command)
+            {
+                case "NEW": Child.DoNew(); break;
+                case "SAVE": Child.Save(); break;
+                case "SEARCH": Child.Inquire(); break;
+                case "DELETE": Child.Delete(); break;
+
+            }
+        }
     }
-    
-     public partial class MDIForm : TabPage
+
+    public partial class MDIForm : TabPage
     { }
      public partial class MyTabControl: TabControl
         {

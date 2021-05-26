@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ApplicationDev;
 
 namespace DEV_form
 {
@@ -62,7 +63,7 @@ namespace DEV_form
                                                             "       MAKER,    " +
                                                             "       EDITDATE, " +
                                                             "       EDITOR    " +
-                                                            "FROM TB_CUST_KBM WITN(NOLOCK) " +
+                                                            "FROM TB_CUST_KBM WITH(NOLOCK) " +
                                                             "WHERE CUSTCODE LIKE '%" + custCode + "%'" +
                                                             "  AND CUSTNAME LIKE '%" + custName + "%'" +
                                                             "  AND BIZTYPE LIKE '%" + bizType + "'" +
@@ -94,6 +95,10 @@ namespace DEV_form
 
                 dgvGrid.Columns["CUSTCODE"].ReadOnly = true;
                 dgvGrid.Columns["CUSTTYPE"].ReadOnly = true;
+                dgvGrid.Columns["MAKER"].ReadOnly    = true;
+                dgvGrid.Columns["MAKEDATE"].ReadOnly = true;
+                dgvGrid.Columns["EDITOR"].ReadOnly   = true;
+                dgvGrid.Columns["EDITDATE"].ReadOnly = true;
 
 
             }
@@ -114,11 +119,18 @@ namespace DEV_form
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (dgvGrid.Rows.Count == 0) return;
             //데이터 그리드 뷰에 신규 행 추가
             DataRow dr = ((DataTable)dgvGrid.DataSource).NewRow();
             ((DataTable)dgvGrid.DataSource).Rows.Add(dr);
             dgvGrid.Columns["CUSTCODE"].ReadOnly = false;
             dgvGrid.Columns["CUSTTYPE"].ReadOnly = false;
+
+            //마지막에 추가 된 행 선택
+            int MaxRow = dgvGrid.Rows.Count - 1;
+            dgvGrid.Rows[MaxRow].Selected = true;
+            dgvGrid.CurrentCell = dgvGrid.Rows[MaxRow].Cells[0];
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -186,14 +198,14 @@ namespace DEV_form
                 String custType = dgvGrid.CurrentRow.Cells["CUSTTYPE"].Value.ToString();
                 String custName = dgvGrid.CurrentRow.Cells["CUSTNAME"].Value.ToString();
                 String bizClass = dgvGrid.CurrentRow.Cells["BIZCLASS"].Value.ToString();
-                String bizType = dgvGrid.CurrentRow.Cells["BIZTYPE"].Value.ToString();
-                String useFlag = dgvGrid.CurrentRow.Cells["USEFLAG"].Value.ToString();
+                String bizType  = dgvGrid.CurrentRow.Cells["BIZTYPE"].Value.ToString();
+                String useFlag  = dgvGrid.CurrentRow.Cells["USEFLAG"].Value.ToString();
                 String firstDate = dgvGrid.CurrentRow.Cells["FIRSTDATE"].Value.ToString();
 
-                if (custType == "고객사") custType = "C";
+                if (custType == "고객사" || custType == "C") custType = "C";
                 else custType = "V";
 
-                if (useFlag == "사용") useFlag = "Y";
+                if (useFlag == "사용" || useFlag == "Y") useFlag = "Y";
                 else useFlag = "N";
 
                 SqlCommand cmd = new SqlCommand();

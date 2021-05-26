@@ -4,14 +4,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ApplicationDev;
 
 namespace DEV_form
 {
-    public partial class FM_Item : Form
+    public partial class FM_Item : Form, ChildInterface
     {
         private SqlConnection Connect = null; // 데이터 베이스 접속 정보
         String strCon = "Data Source=61.105.9.203;Initial Catalog=AppDEV; User ID=kfqs1; Password=1234";
@@ -283,6 +285,166 @@ namespace DEV_form
             Tran.Commit();
             MessageBox.Show("정상적으로 등록하였습니다.");
             Connect.Close();
+        }
+
+        private void btnLoadPic_Click(object sender, EventArgs e)
+        {
+            string sImageFile = String.Empty;
+
+            // 이미지 불러오기 및 저장, 파일 탐색기 호출
+            OpenFileDialog Dialog = new OpenFileDialog();
+            if (Dialog.ShowDialog() == DialogResult.OK)
+            {
+                sImageFile = Dialog.FileName;
+                picItemImage.Tag = Dialog.FileName;
+                //지정된 파일에서 이미지를 만들어 픽쳐박스에 넣는다.
+                picItemImage.Image = Bitmap.FromFile(sImageFile);
+            }
+        }
+
+        private void picItemImage_Click(object sender, EventArgs e)
+        {
+            //픽쳐박스 크기 최대화 및 이전 사이즈로
+            if(this.picItemImage.Dock == System.Windows.Forms.DockStyle.Fill)
+            {
+                //이미지가 가득채워져있는 상태이면 원상태로 바꿔라
+                this.picItemImage.Dock = System.Windows.Forms.DockStyle.None;
+            }
+            else
+            {
+                //이미지가 가득채워져 있지 않으면 가득 채워라
+                picItemImage.Dock = System.Windows.Forms.DockStyle.Fill;
+                //이미지를 가장 앞으로 가지고 온다.
+                picItemImage.BringToFront();
+            }
+        }
+
+        private void btnPicSave_Click(object sender, EventArgs e)
+        {
+            //픽쳐박스 이미지 저장
+            if (dgvGrid.Rows.Count == 0) return;
+            if (picItemImage.Image == null) return;
+            if (picItemImage.Tag.ToString() == "") return;
+
+            if (MessageBox.Show("선택된 이미지로 등록하시겠습니까?", "이미지 등록", MessageBoxButtons.YesNo) == DialogResult.No) return;
+
+            Byte[] bImage = null;
+            Connect = new SqlConnection(strCon);
+            try
+            {
+                //파일을 불러오기 위한 파일 경로 방법 지정
+                FileStream stream = new FileStream(picItemImage.Tag.ToString(),
+                                                   FileMode.Open,
+                                                   FileAccess.Read);
+
+                //읽어들인 파일을 바이너리 코드로 변환
+                BinaryReader reader = new BinaryReader(stream);
+                //만들어진 바이너리 코드 이미지를 Byte화 하여 저장.
+                bImage = reader.ReadBytes(Convert.ToInt32(stream.Length));
+                reader.Close();
+                stream.Close();
+                //바이너리 코듣는 컴퓨터가 인식할 수 있는 0과 1로 구성된 이진코드
+                //바이트코드는 cpu가 아닌 가상머신에서 이해할 수 있는 코드
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = Connect;
+                Connect.Open();
+
+                String sItemCode =
+                    dgvGrid.CurrentRow.Cells["ITEMCODE"].Value.ToString();
+                cmd.CommandText = "UPDATE TB_TESTITEM_KBM SET ITEMIMG = @IMAGE WHERE ITEMCODE = @ITEMCODE";
+                cmd.Parameters.AddWithValue("@IMAGE", bImage);
+                cmd.Parameters.AddWithValue("@ITEMCODE", sItemCode);
+                cmd.ExecuteNonQuery();
+                Connect.Close();
+                MessageBox.Show("이미지가 등록되었씁니다");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("이미지 저장 중 오류가 발생하였습니다.");
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void dgvGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //선택 시 해당품목 이미지 가져오기.
+            String sItemCode = dgvGrid.CurrentRow.Cells["ITEMCODE"].Value.ToString();
+
+            Connect = new SqlConnection(strCon);
+            Connect.Open();
+            try
+            {
+                String sSql = $"SELECT ITEMIMG FROM TB_TESTITEM_KBM WHERE ITEMCODE ='{sItemCode}'";
+                picItemImage.Image = null;
+                SqlDataAdapter Adapter = new SqlDataAdapter(sSql, Connect);
+                DataTable dtTemp = new DataTable();
+                Adapter.Fill(dtTemp);
+
+                if (dtTemp.Rows.Count == 0) return;
+
+                byte[] bImage = null;
+                bImage = (byte[])dtTemp.Rows[0]["ITEMIMG"]; //이미지를 byte화 한다
+                if(bImage != null)
+                {
+                    picItemImage.Image = new Bitmap(new MemoryStream(bImage)); //메모리 스트림을 이용하여 파일을 그림 파일로 전환한다.
+                    picItemImage.BringToFront();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                Connect.Close();
+            }
+        }
+
+        private void btnPicDelete_Click(object sender, EventArgs e)
+        {
+            //품목에 저장된 이미지 삭제
+            if (dgvGrid.Rows.Count == 0) return;
+            if (MessageBox.Show("선택한 이미지를 삭제하시겠씁니까?", "이미지삭제", MessageBoxButtons.YesNo) == DialogResult.No) return;
+
+            SqlCommand cmd = new SqlCommand();
+            Connect = new SqlConnection(strCon);
+            Connect.Open();
+
+            try
+            {
+                String sItemCode = dgvGrid.CurrentRow.Cells["ITEMCODE"].Value.ToString();
+                cmd.CommandText = $"UPDATE TB_TESTITEM_KBM SET ITEMIMG = null WHERE ITEMCODE ='{sItemCode}'";
+                cmd.Connection = Connect;
+                cmd.ExecuteNonQuery();
+                picItemImage.Image = null;
+                MessageBox.Show("정상적으로 삭제하였씁니다.");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        public void Inquire()
+        {
+            btnSearch_Click(null, null);
+        }
+
+        public void DoNew()
+        {
+        }
+
+        public void Delete()
+        {
+        }
+
+        public void Save()
+        {
         }
     }
 }
