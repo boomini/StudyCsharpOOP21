@@ -37,6 +37,7 @@ namespace ApplicationDev
             this.FM_Item = new System.Windows.Forms.ToolStripMenuItem();
             this.FM_CUST = new System.Windows.Forms.ToolStripMenuItem();
             this.Fm_Cust_ = new System.Windows.Forms.ToolStripMenuItem();
+            this.Fm_User = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.stbSearch = new System.Windows.Forms.ToolStripButton();
             this.stbInsert = new System.Windows.Forms.ToolStripButton();
@@ -74,7 +75,8 @@ namespace ApplicationDev
             this.MDI_TEST2,
             this.FM_Item,
             this.FM_CUST,
-            this.Fm_Cust_});
+            this.Fm_Cust_,
+            this.Fm_User});
             this.M_SYSTEM.Name = "M_SYSTEM";
             this.M_SYSTEM.Size = new System.Drawing.Size(98, 24);
             this.M_SYSTEM.Text = "시스템관리";
@@ -108,6 +110,12 @@ namespace ApplicationDev
             this.Fm_Cust_.Name = "Fm_Cust_";
             this.Fm_Cust_.Size = new System.Drawing.Size(227, 26);
             this.Fm_Cust_.Text = "거래처 조회 Sample";
+            // 
+            // Fm_User
+            // 
+            this.Fm_User.Name = "Fm_User";
+            this.Fm_User.Size = new System.Drawing.Size(227, 26);
+            this.Fm_User.Text = "사용자관리";
             // 
             // toolStrip
             // 
@@ -294,5 +302,6 @@ namespace ApplicationDev
         private System.Windows.Forms.ToolStripMenuItem FM_Item;
         private System.Windows.Forms.ToolStripMenuItem FM_CUST;
         private System.Windows.Forms.ToolStripMenuItem Fm_Cust_;
+        private System.Windows.Forms.ToolStripMenuItem Fm_User;
     }
 }

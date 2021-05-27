@@ -20,7 +20,7 @@ namespace ApplicationDev
             //버튼에 이벤트 추가
             
             //로그인
-           /* FM_Login Login = new FM_Login();
+            FM_Login Login = new FM_Login();
             Login.ShowDialog();
             tssUserName.Text = Login.Tag.ToString();
             if(Login.Tag.ToString() == "FAIL")
@@ -29,7 +29,7 @@ namespace ApplicationDev
                 //Application.Exit();
                 System.Environment.Exit(0);
             }
-           */
+           
             ////버튼에 종료 이벤트추가
             this.stbExit.Click += new System.EventHandler(this.stbExit_Click);
 
