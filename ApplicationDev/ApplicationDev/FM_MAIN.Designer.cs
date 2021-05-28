@@ -38,6 +38,7 @@ namespace ApplicationDev
             this.FM_CUST = new System.Windows.Forms.ToolStripMenuItem();
             this.Fm_Cust_ = new System.Windows.Forms.ToolStripMenuItem();
             this.Fm_User = new System.Windows.Forms.ToolStripMenuItem();
+            this.FM_Rent = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.stbSearch = new System.Windows.Forms.ToolStripButton();
             this.stbInsert = new System.Windows.Forms.ToolStripButton();
@@ -52,6 +53,7 @@ namespace ApplicationDev
             this.tssNowDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.myTabControl1 = new ApplicationDev.MyTabControl();
+            this.FM_RentClient = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -76,7 +78,9 @@ namespace ApplicationDev
             this.FM_Item,
             this.FM_CUST,
             this.Fm_Cust_,
-            this.Fm_User});
+            this.Fm_User,
+            this.FM_Rent,
+            this.FM_RentClient});
             this.M_SYSTEM.Name = "M_SYSTEM";
             this.M_SYSTEM.Size = new System.Drawing.Size(98, 24);
             this.M_SYSTEM.Text = "시스템관리";
@@ -116,6 +120,12 @@ namespace ApplicationDev
             this.Fm_User.Name = "Fm_User";
             this.Fm_User.Size = new System.Drawing.Size(227, 26);
             this.Fm_User.Text = "사용자관리";
+            // 
+            // FM_Rent
+            // 
+            this.FM_Rent.Name = "FM_Rent";
+            this.FM_Rent.Size = new System.Drawing.Size(227, 26);
+            this.FM_Rent.Text = "렌트내역 조회";
             // 
             // toolStrip
             // 
@@ -254,6 +264,12 @@ namespace ApplicationDev
             this.myTabControl1.Size = new System.Drawing.Size(1196, 381);
             this.myTabControl1.TabIndex = 6;
             // 
+            // FM_RentClient
+            // 
+            this.FM_RentClient.Name = "FM_RentClient";
+            this.FM_RentClient.Size = new System.Drawing.Size(32, 19);
+            this.FM_RentClient.Text = "toolStripMenuItem1";
+            // 
             // FM_MAIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -303,5 +319,7 @@ namespace ApplicationDev
         private System.Windows.Forms.ToolStripMenuItem FM_CUST;
         private System.Windows.Forms.ToolStripMenuItem Fm_Cust_;
         private System.Windows.Forms.ToolStripMenuItem Fm_User;
+        private System.Windows.Forms.ToolStripMenuItem FM_Rent;
+        private System.Windows.Forms.ToolStripMenuItem FM_RentClient;
     }
 }
